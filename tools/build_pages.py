@@ -7,7 +7,7 @@ Copy is taken from M&B's current site (mbfuel.co.uk), read 13 Nov 2026.
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "3"  # bump after CSS/JS edits so returning visitors get fresh files
+V = "4"  # bump after CSS/JS edits so returning visitors get fresh files
 SRC = "https://www.mbfuel.co.uk"
 TEL = "tel:+442380619655"
 TEL_TXT = "023 8061 9655"
@@ -29,6 +29,10 @@ VAN = '<svg class="ico" viewBox="0 0 66 50" fill="none" stroke="currentColor" st
 
 def ext(href, text):
     return f'<a class="src-link" href="{href}">{text} {EXT}<span class="sr-only"> (opens M&amp;B’s current website)</span></a>'
+
+
+def more(href, text):
+    return f'<a class="src-link" href="{href}">{text} {ARROW}</a>'
 
 
 def wa_preview(extra=""):
@@ -86,15 +90,15 @@ FOOTER = f"""<footer class="site-footer">
       </nav>
       <div class="footer-contact">
         <a href="{TEL}">{PHONE}{TEL_TXT}</a>
-        <a href="{SRC}/">{GLOBE}mbfuel.co.uk</a>
+        <span>{GLOBE}mbfuel.co.uk</span>
         <span>{PIN}<address>Unit 3 Aercon Buildings, Woodside Rd,<br>Eastleigh, Hampshire SO50 4ET</address></span>
       </div>
     </div>
     <div class="footer-base">
       <span>© 2026 M&amp;B Fuel Injection Service Ltd. All rights reserved.</span>
-      <span class="legal"><a href="{SRC}/terms-conditions/">Terms &amp; Conditions</a><a href="{SRC}/privacy-policy/">Privacy Policy</a></span>
+      <span class="legal"><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></span>
     </div>
-    <p class="preview-note">Design preview only. The live website is <a href="{SRC}/">mbfuel.co.uk</a>.</p>
+    <p class="preview-note">Design preview only. Not the live website.</p>
   </div>
 </footer>"""
 
@@ -202,10 +206,10 @@ CONTACT = f"""<section class="contact-band" id="contact" aria-labelledby="contac
     </div>
     <div class="card">
       <h3>Get your estimate</h3>
-      <p>Call the workshop to talk through the job, or send the details in writing using the contact form on M&amp;B’s current website.</p>
+      <p>Call the workshop to talk through the job. An online form for written enquiries is coming soon.</p>
       <a class="btn btn-red" href="{TEL}">{PHONE}Call {TEL_TXT}</a>
-      <a class="btn btn-outline" href="{SRC}/contact/">Write to us on mbfuel.co.uk {EXT}<span class="sr-only"> (opens M&amp;B’s current website)</span></a>
-      <p class="note" style="margin-top:14px">This preview doesn’t collect enquiries. Written enquiries go through the form on M&amp;B’s existing contact page.</p>
+      <div class="soon-btn" aria-label="Written enquiry form, coming soon">Written enquiry form <span class="tag">Coming soon</span></div>
+      <p class="note" style="margin-top:14px">This preview doesn’t collect enquiries. Until the form is ready, please call the workshop.</p>
       <address class="address"><strong>M&amp;B Fuel Injection Service Ltd</strong><br>Unit 3 Aercon Buildings, Woodside Rd,<br>Eastleigh, Hampshire SO50 4ET</address>
     </div>
   </div>
@@ -319,19 +323,18 @@ DIAG = f"""<section class="page-hero">
         <li>Low fuel pressure</li>
       </ul>
       <p>The workshop uses Bosch KTS670, Delphi DS350 and Denso DSTPC diagnostic equipment.</p>
-      <p>{ext(SRC + '/diagnostics/', 'Diagnostics on mbfuel.co.uk')}</p>
 
       <h2 id="removal">Removal &amp; fitting</h2>
       <p>Fuel pumps, injectors and related parts can be removed, serviced and refitted to your vehicle, either at our premises or on site. Smoke emission testing to MOT standards is also available.</p>
-      <p>{ext(SRC + '/removal-fitting-service/', 'Removal &amp; fitting on mbfuel.co.uk')}</p>
+      <p>{more('removal-fitting.html', 'More about removal &amp; fitting')}</p>
 
       <h2 id="seized">Seized injector removal</h2>
       <p>Using the latest equipment, we can remove injectors that are seized in the cylinder head, snapped or damaged. The work can be done at your premises or in our workshops. Genuine replacement injectors are available, plus a re-coding service.</p>
-      <p>{ext(SRC + '/seized-injector-removal-service/', 'Seized injector removal on mbfuel.co.uk')}</p>
+      <p>{more('seized-injector-removal.html', 'More about seized injector removal')}</p>
 
       <h2 id="dpf">DPF cleaning</h2>
       <p>Cleaning your existing diesel particulate filter recovers up to 98% of its original efficiency, which can save the cost of a replacement. The service covers cars, heavy goods vehicles, plant and agricultural machinery.</p>
-      <p>{ext(SRC + '/dpf-cleaning-service/', 'DPF cleaning on mbfuel.co.uk')}</p>
+      <p>{more('dpf-cleaning.html', 'More about DPF cleaning')}</p>
 
       <figure class="figure">
         <img src="assets/img/mb-workshop-strip.webp" width="960" height="200" alt="Technicians at work, and a workshop with clean room and test shop" loading="lazy">
@@ -360,24 +363,24 @@ INJ = f"""<section class="page-hero">
     <div>
       <h2 id="common-rail">Common rail</h2>
       <p>A complete and cost-effective test and repair service for Bosch and Delphi common rail pumps (CP1 and CP3) and injectors. Only genuine parts are fitted, calibrated on Bosch and Delphi accredited test equipment.</p>
-      <p>{ext(SRC + '/common-rail/', 'Common rail on mbfuel.co.uk')}</p>
+      <p>{more('common-rail.html', 'More about common rail')}</p>
 
       <h2 id="electronic-pumps">Electronic fuel pumps</h2>
       <p>As an official Bosch and Delphi Diesel Centre, our factory-trained technicians repair and test VP30 and VP44 pumps with integrated ECU, as fitted to Audi, BMW, Ford, Vauxhall and others, as well as EDC inline and EDC rotary pumps. All repairs are guaranteed and covered by the nationwide Bosch and Delphi diesel network.</p>
-      <p>{ext(SRC + '/electronic-fuel-pumps/', 'Electronic fuel pumps on mbfuel.co.uk')}</p>
+      <p>{more('electronic-fuel-pumps.html', 'More about electronic fuel pumps')}</p>
 
       <h2 id="unit-pump">Unit pump &amp; injector repair</h2>
       <p>Test and repair for Bosch and Delphi EUI (electronic unit injectors) and EUP (electronic unit pumps), including the latest Delphi smart pump and injector, for makes including DAF, Iveco, Land Rover, MAN, Mercedes, Renault, Scania, Volvo, Volvo Penta and VW.</p>
-      <p>{ext(SRC + '/unit-pump-injector-repair/', 'Unit pump &amp; injector repair on mbfuel.co.uk')}</p>
+      <p>{more('unit-pump-injector-repair.html', 'More about unit pump &amp; injector repair')}</p>
 
       <h2 id="all-makes">All makes</h2>
       <p>As well as Bosch and Delphi, we test and repair most makes of diesel fuel injection equipment, including Denso, Stanadyne and Siemens, and earlier makes such as Bryce, Gardner and CAV. A large selection of service exchange units is available from stock.</p>
-      <p>{ext(SRC + '/all-makes/', 'All makes on mbfuel.co.uk')}</p>
+      <p>{more('all-makes.html', 'More about the makes we repair')}</p>
 
       <h2 id="test-shop">Test shop &amp; clean room</h2>
       <p>The test shop holds only manufacturer-approved equipment, including Bosch 815 and Hartridge test benches and the Bosch EPS 708 common rail bench, rated for injection pressures up to 2,500 bar. The benches are regularly audited, and every test result is recorded and archived electronically.</p>
       <p>Common rail pumps and injectors are assembled in a separate clean room with climate control and HEPA filtration, because even tiny amounts of dirt can cause a modern injector to fail.</p>
-      <p>{ext(SRC + '/test-shop/', 'Test shop on mbfuel.co.uk')} &nbsp; {ext(SRC + '/clean-room/', 'Clean room on mbfuel.co.uk')}</p>
+      <p>{more('test-shop.html', 'More about the test shop')} &nbsp; {more('clean-room.html', 'More about the clean room')}</p>
 
       <h2 id="sending">Sending us a part</h2>
       <p>Garages and customers can send injectors and pumps in using our <a href="collection-delivery.html">collection and delivery service</a>. Have the part number to hand when you call, as it helps us give you a free estimate.</p>
@@ -406,8 +409,8 @@ COL = f"""<section class="page-hero">
       <h3>Daily collection and delivery</h3>
       <p>A daily delivery and collection service runs when you need it, from our industrial premises in Eastleigh, close to the M3 and M27 motorways.</p>
       <h3>Express courier (UK only)</h3>
-      <p>If you’re outside the daily delivery area, we can offer an express courier service anywhere in the UK. Fill in the collection form on M&amp;B’s current website and we’ll email you a collection label. Collection is free for parcels up to 30kg.</p>
-      <p>{ext(SRC + '/delivery-collection/', 'Arrange a collection on mbfuel.co.uk')}</p>
+      <p>If you’re outside the daily delivery area, we can offer an express courier service anywhere in the UK. Request a collection and we’ll email you a collection label. Collection is free for parcels up to 30kg.</p>
+      <p class="soon-inline"><strong>Online collection request:</strong> coming soon. For now, call <a href="{TEL}">{TEL_TXT}</a> to arrange a collection.</p>
 
       <h2>Is my location covered?</h2>
       <p>Call the workshop and tell us where you are. We’ll let you know whether you’re on the daily route or whether the courier service is the better option.</p>
@@ -431,12 +434,12 @@ COL = f"""<section class="page-hero">
 {cta_strip('Need something collected? Call the workshop.')}"""
 
 # ---------- services hub ----------
-def svc(title, text, preview=None, source=None):
+def svc(title, text, preview=None, page_file=None):
     links = []
-    if preview:
+    if page_file:
+        links.append(f'<a href="{page_file}">Find out more {ARROW}</a>')
+    elif preview:
         links.append(f'<a href="{preview[0]}">{preview[1]} {ARROW}</a>')
-    if source:
-        links.append(ext(source, 'Full details on mbfuel.co.uk'))
     return f'<div class="svc"><h3>{title}</h3><p>{text}</p><div class="links">{"".join(links)}</div></div>'
 
 
@@ -456,35 +459,35 @@ SVC = f"""<section class="page-hero">
       <h2>Vehicle faults &amp; on-vehicle work</h2>
       <p>For drivers and fleet operators with a diesel fault, and garages that need parts removed or refitted.</p>
       <div class="svc-grid">
-        {svc('Diagnostics', 'Fault-code diagnosis of electronic control systems on most vehicles on the road today.', ('vehicle-diagnostics.html#faults', 'Vehicle diagnostics'), SRC + '/diagnostics/')}
-        {svc('Removal &amp; Fitting', 'Pumps and injectors removed, serviced and refitted at our premises or on site. Smoke emission testing to MOT standards.', ('vehicle-diagnostics.html#removal', 'Read the summary'), SRC + '/removal-fitting-service/')}
-        {svc('Seized Injector Removal', 'Seized, snapped or damaged injectors removed at your premises or ours. Genuine replacements and re-coding.', ('vehicle-diagnostics.html#seized', 'Read the summary'), SRC + '/seized-injector-removal-service/')}
-        {svc('DPF Cleaning', 'Recovers up to 98% of a DPF’s original efficiency, for cars, HGVs, plant and agricultural machinery.', ('vehicle-diagnostics.html#dpf', 'Read the summary'), SRC + '/dpf-cleaning-service/')}
+        {svc('Diagnostics', 'Fault-code diagnosis of electronic control systems on most vehicles on the road today.', ('vehicle-diagnostics.html#faults', 'Vehicle diagnostics'), None)}
+        {svc('Removal &amp; Fitting', 'Pumps and injectors removed, serviced and refitted at our premises or on site. Smoke emission testing to MOT standards.', ('vehicle-diagnostics.html#removal', 'Read the summary'), 'removal-fitting.html')}
+        {svc('Seized Injector Removal', 'Seized, snapped or damaged injectors removed at your premises or ours. Genuine replacements and re-coding.', ('vehicle-diagnostics.html#seized', 'Read the summary'), 'seized-injector-removal.html')}
+        {svc('DPF Cleaning', 'Recovers up to 98% of a DPF’s original efficiency, for cars, HGVs, plant and agricultural machinery.', ('vehicle-diagnostics.html#dpf', 'Read the summary'), 'dpf-cleaning.html')}
       </div>
     </div>
     <div class="svc-group" id="components">
       <h2>Injectors &amp; pumps</h2>
       <p>For garages and customers with a component to test or repair. Parts can be sent in using our <a href="collection-delivery.html">collection and delivery service</a>.</p>
       <div class="svc-grid">
-        {svc('Common Rail', 'Bosch and Delphi common rail pumps (CP1 and CP3) and injectors, using genuine parts.', ('injector-pump-services.html#common-rail', 'Injector &amp; pump services'), SRC + '/common-rail/')}
-        {svc('Electronic Fuel Pumps', 'VP30 and VP44 pumps with integrated ECU, plus EDC inline and rotary pumps. Repairs guaranteed.', ('injector-pump-services.html#electronic-pumps', 'Read the summary'), SRC + '/electronic-fuel-pumps/')}
-        {svc('Unit Pump &amp; Injector Repair', 'Bosch and Delphi EUI and EUP, including the latest Delphi smart pump and injector.', ('injector-pump-services.html#unit-pump', 'Read the summary'), SRC + '/unit-pump-injector-repair/')}
-        {svc('All Makes', 'Denso, Stanadyne, Siemens and earlier makes such as Bryce, Gardner and CAV. Exchange units from stock.', ('injector-pump-services.html#all-makes', 'Read the summary'), SRC + '/all-makes/')}
+        {svc('Common Rail', 'Bosch and Delphi common rail pumps (CP1 and CP3) and injectors, using genuine parts.', ('injector-pump-services.html#common-rail', 'Injector &amp; pump services'), 'common-rail.html')}
+        {svc('Electronic Fuel Pumps', 'VP30 and VP44 pumps with integrated ECU, plus EDC inline and rotary pumps. Repairs guaranteed.', ('injector-pump-services.html#electronic-pumps', 'Read the summary'), 'electronic-fuel-pumps.html')}
+        {svc('Unit Pump &amp; Injector Repair', 'Bosch and Delphi EUI and EUP, including the latest Delphi smart pump and injector.', ('injector-pump-services.html#unit-pump', 'Read the summary'), 'unit-pump-injector-repair.html')}
+        {svc('All Makes', 'Denso, Stanadyne, Siemens and earlier makes such as Bryce, Gardner and CAV. Exchange units from stock.', ('injector-pump-services.html#all-makes', 'Read the summary'), 'all-makes.html')}
       </div>
     </div>
     <div class="svc-group" id="workshop">
       <h2>Workshop &amp; facilities</h2>
       <div class="svc-grid">
-        {svc('Test Shop', 'Manufacturer-approved Bosch and Hartridge test benches, regularly audited, with results logged electronically.', ('injector-pump-services.html#test-shop', 'Read the summary'), SRC + '/test-shop/')}
-        {svc('Clean Room', 'Climate-controlled clean room with HEPA filtration for assembling common rail pumps and injectors.', ('injector-pump-services.html#test-shop', 'Read the summary'), SRC + '/clean-room/')}
-        {svc('Bosch Diesel Centre', 'Part of Bosch’s international diesel workshop network: diagnosis, pump exchange and component repair.', None, SRC + '/bosch-diesel-centre/')}
-        {svc('Delphi Diesel Centre of Excellence', 'Authorised for OE warranty work, advanced diagnostics and repair of Delphi systems.', None, SRC + '/delphi-diesel-centre/')}
+        {svc('Test Shop', 'Manufacturer-approved Bosch and Hartridge test benches, regularly audited, with results logged electronically.', ('injector-pump-services.html#test-shop', 'Read the summary'), 'test-shop.html')}
+        {svc('Clean Room', 'Climate-controlled clean room with HEPA filtration for assembling common rail pumps and injectors.', ('injector-pump-services.html#test-shop', 'Read the summary'), 'clean-room.html')}
+        {svc('Bosch Diesel Centre', 'Part of Bosch’s international diesel workshop network: diagnosis, pump exchange and component repair.', None, 'bosch-diesel-centre.html')}
+        {svc('Delphi Diesel Centre of Excellence', 'Authorised for OE warranty work, advanced diagnostics and repair of Delphi systems.', None, 'delphi-diesel-centre.html')}
       </div>
     </div>
     <div class="svc-group" id="electrical">
       <h2>Auto electrical</h2>
       <div class="svc-grid">
-        {svc('Auto Electrical', 'Overhaul and testing of starter motors and alternators for car, commercial, plant and marine use. Free starter and alternator testing.', None, SRC + '/auto-electrical/')}
+        {svc('Auto Electrical', 'Overhaul and testing of starter motors and alternators for car, commercial, plant and marine use. Free starter and alternator testing.', None, 'auto-electrical.html')}
       </div>
     </div>
     <figure class="figure">
@@ -494,6 +497,128 @@ SVC = f"""<section class="page-hero">
   </div>
 </div>
 {cta_strip('Not sure which service you need? Call the workshop.')}"""
+
+# ---------- coming-soon service pages ----------
+# Each: file, title, group (hub anchor), lead, paragraphs, optional list, related route page
+SERVICE_PAGES = [
+    ("removal-fitting.html", "Removal &amp; Fitting", "vehicle",
+     "Fuel pumps, injectors and related parts removed, serviced and refitted to your vehicle, at our premises or on site.",
+     ["Smoke emission testing to MOT standards is also available."], None,
+     ("vehicle-diagnostics.html", "Vehicle diagnostics")),
+    ("seized-injector-removal.html", "Seized Injector Removal", "vehicle",
+     "We remove seized, snapped and damaged injectors using the very latest equipment.",
+     ["Work can be carried out at your premises or in our own workshops. Genuine replacement injectors are available, plus a re-coding service."],
+     ["Injectors seized in the cylinder head", "Snapped injectors", "Damaged injectors"],
+     ("vehicle-diagnostics.html", "Vehicle diagnostics")),
+    ("dpf-cleaning.html", "DPF Cleaning", "vehicle",
+     "Cleaning recovers up to 98% of your DPF’s original efficiency, saving the cost of a replacement.",
+     ["The service covers cars, heavy goods vehicles, plant and agricultural machinery, as well as selective catalytic reduction (SCR) units."],
+     ["Reverse flush system removes ash deposits", "Removes PM10, oil and cerium residuals", "Preserves the noble metals of the DPF and catalyst", "Sensors can be left in place"],
+     ("vehicle-diagnostics.html", "Vehicle diagnostics")),
+    ("common-rail.html", "Common Rail", "components",
+     "A complete and cost-effective test and repair service for Bosch and Delphi common rail pumps (CP1 and CP3) and injectors.",
+     ["We fit only genuine parts, calibrated on state-of-the-art Bosch and Delphi accredited test equipment."], None,
+     ("injector-pump-services.html", "Injector &amp; pump services")),
+    ("electronic-fuel-pumps.html", "Electronic Fuel Pumps", "components",
+     "Factory-trained technicians repair and test VP30 and VP44 pumps with integrated ECU, as well as EDC inline and EDC rotary pumps.",
+     ["These pumps are fitted to Audi, BMW, Ford, Vauxhall and others. All repairs are guaranteed and covered by the nationwide Bosch and Delphi diesel network."], None,
+     ("injector-pump-services.html", "Injector &amp; pump services")),
+    ("unit-pump-injector-repair.html", "Unit Pump &amp; Injector Repair", "components",
+     "Test and repair for Bosch and Delphi EUI (electronic unit injectors) and EUP (electronic unit pumps), including the latest Delphi smart pump and injector.",
+     ["Makes we work on include:"],
+     ["DAF", "Iveco", "Land Rover", "MAN", "Mercedes", "Renault", "Scania", "Volvo", "Volvo Penta", "VW"],
+     ("injector-pump-services.html", "Injector &amp; pump services")),
+    ("all-makes.html", "All Makes", "components",
+     "As well as Bosch and Delphi, we test and repair most makes of diesel fuel injection equipment.",
+     ["That includes Denso, Stanadyne and Siemens, and earlier makes such as Bryce, Gardner and CAV. A large selection of service exchange units is available from stock.",
+      "We operate an open house policy and give free estimates for repairs to fuel injection or auto electrical units."], None,
+     ("injector-pump-services.html", "Injector &amp; pump services")),
+    ("test-shop.html", "Test Shop", "workshop",
+     "Our test shop holds only manufacturer-approved computerised test equipment, regularly audited to strict diesel test specifications.",
+     ["Every test result is recorded and archived electronically. Our equipment includes:"],
+     ["3 × Bosch 815 test benches", "Hartridge AVM PC2 test bench with Cambox", "Hartridge CRi PC test bench", "Hartridge 700 test bench", "Bosch EPS 708 common rail test bench, rated to 2,500 bar"],
+     ("injector-pump-services.html", "Injector &amp; pump services")),
+    ("clean-room.html", "Clean Room", "workshop",
+     "Common rail pumps and injectors are assembled in a separate clean room with climate control and HEPA filtration.",
+     ["Even tiny amounts of dirt can cause a modern common rail injector to malfunction or break down. Working in the clean room means parts are assembled to manufacturers’ quality standards, and bench test results are recorded and archived electronically."], None,
+     ("injector-pump-services.html", "Injector &amp; pump services")),
+    ("bosch-diesel-centre.html", "Bosch Diesel Centre", "workshop",
+     "M&amp;B has been a Bosch Diesel Service Agent since 1976 and holds Bosch Diesel Centre status, quality audited every year.",
+     ["As a Bosch Diesel Centre we’re part of Bosch’s international diesel workshop organisation, offering workshop owners, business customers and fleet operators:"],
+     ["Diagnosis and system tests for all diesel systems and makes", "Pump exchange from our extensive stock", "Exchange pumps reconditioned by the Bosch Diesel Centre", "Factory-repaired pumps and new original equipment pumps", "Component repair of modern diesel systems", "General diesel vehicle repairs and maintenance to manufacturers’ specifications"],
+     ("services.html", "All services")),
+    ("delphi-diesel-centre.html", "Delphi Diesel Centre of Excellence", "workshop",
+     "M&amp;B became a Delphi Diesel Centre in 2008 and has since been appointed a Centre of Excellence.",
+     ["We’re authorised to carry out OE warranty work, advanced diesel diagnostics, and the test and repair of all Delphi diesel fuel injection systems, including rotary pumps and injectors, common rail pumps and injectors, and electronic unit injectors."], None,
+     ("services.html", "All services")),
+    ("auto-electrical.html", "Auto Electrical", "electrical",
+     "A complete overhaul and testing service for all makes of starter motor and alternator, for car, commercial, plant and marine applications.",
+     ["Starter and alternator testing is free of charge, and free estimates before repair are available on request. Service exchange units are usually available from stock."], None,
+     ("services.html", "All services")),
+]
+
+
+def soon_panel(title):
+    return f"""<div class="soon">
+        <span class="tag">Coming soon</span>
+        <h2>Full {title} page coming soon</h2>
+        <p>We’re putting together a fuller page for this service, with photos and more detail. In the meantime, the workshop is happy to answer any questions.</p>
+        <div class="btn-row">
+          <a class="btn btn-red" href="{TEL}">{PHONE}Call {TEL_TXT}</a>
+          <a class="btn btn-outline" href="index.html#estimate">Request a free estimate {ARROW}</a>
+        </div>
+      </div>"""
+
+
+def service_page(fname, title, group, lead, paras, items, related):
+    back = more('services.html', 'See all services')
+    if related[0] != 'services.html':
+        back = more(related[0], 'Back to ' + related[1].lower()) + ' &nbsp; ' + back
+    body_paras = "\n      ".join(f"<p>{x}</p>" for x in paras)
+    lst = ("<ul class=\"ticks\">" + "".join(f"<li>{i}</li>" for i in items) + "</ul>") if items else ""
+    body = f"""<section class="page-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Home</a> / <a href="services.html#{group}">Services</a> / {title}</p>
+    <h1>{title}</h1>
+    <p class="lead">{lead}</p>
+    <div class="btn-row">
+      <a class="btn btn-red" href="{TEL}">{PHONE}Call {TEL_TXT}</a>
+      <a class="btn btn-outline-light" href="index.html#estimate">Request a free estimate {ARROW}</a>
+    </div>
+  </div>
+</section>
+<div class="content">
+  <div class="wrap content-grid">
+    <div>
+      {body_paras}
+      {lst}
+      {soon_panel(title)}
+      <p style="margin-top:24px">{back}</p>
+    </div>
+    {aside('Talk to the workshop', 'Call to discuss a job, or have your part number ready for a free estimate.')}
+  </div>
+</div>"""
+    page(fname, f"{title} | M&amp;B Fuel Injection Service", lead.replace('&amp;', '&amp;')[:155], "svc", body)
+
+
+def legal_page(fname, title):
+    body = f"""<section class="page-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Home</a> / {title}</p>
+    <h1>{title}</h1>
+  </div>
+</section>
+<div class="content">
+  <div class="wrap">
+    <div class="soon" style="max-width:720px">
+      <span class="tag">Coming soon</span>
+      <h2>Our {title.lower()} will be published here</h2>
+      <p>This page will be added when the new website launches. If you need a copy in the meantime, please call the workshop on <a href="{TEL}">{TEL_TXT}</a>.</p>
+    </div>
+  </div>
+</div>"""
+    page(fname, f"{title} | M&amp;B Fuel Injection Service", f"M&amp;B Fuel Injection Service {title.lower()}.", "", body)
+
 
 if __name__ == "__main__":
     page("index.html", "M&amp;B Fuel Injection Service | Diesel expertise since 1974",
@@ -506,3 +631,7 @@ if __name__ == "__main__":
          "Test and repair of diesel injectors and pumps of all makes.", "inj", INJ)
     page("collection-delivery.html", "Collection &amp; delivery | M&amp;B Fuel Injection Service",
          "Free collection and delivery for diesel injectors, pumps and components.", "col", COL)
+    for sp in SERVICE_PAGES:
+        service_page(*sp)
+    legal_page("terms.html", "Terms &amp; Conditions")
+    legal_page("privacy.html", "Privacy Policy")

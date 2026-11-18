@@ -327,3 +327,11 @@ p { margin: 0 0 1em; }
   .contact-opt .big { font-size: 1.45rem; }
   .footer-nav ul { column-gap: 24px; }
 }
+
+/* Coming soon */
+.soon { margin-top: 32px; padding: 26px; border: 2px dashed #b9cce5; border-radius: var(--radius); background: var(--pale-2); }
+.soon .tag { color: var(--red); margin-bottom: 10px; }
+.soon h2 { margin-top: 6px !important; font-size: 1.4rem; }
+.soon-btn { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; min-height: 50px; margin-top: 12px; padding: 12px 18px; border: 2px dashed #b9cce5; border-radius: 8px; color: var(--muted); font-weight: 700; }
+.soon-btn .tag { color: var(--red); }
+.soon-inline { padding: 14px 16px; border-left: 4px solid var(--red); background: var(--pale-2); border-radius: 4px; }
