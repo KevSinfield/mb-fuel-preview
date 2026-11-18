@@ -7,7 +7,7 @@ Copy is taken from M&B's current site (mbfuel.co.uk), read 13 Nov 2026.
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-V = "4"  # bump after CSS/JS edits so returning visitors get fresh files
+V = "5"  # bump after CSS/JS edits so returning visitors get fresh files
 SRC = "https://www.mbfuel.co.uk"
 TEL = "tel:+442380619655"
 TEL_TXT = "023 8061 9655"
